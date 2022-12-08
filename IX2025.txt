@@ -1,0 +1,101 @@
+technotut(config)# show startup-config
+Using 1578 out of 524288 bytes
+
+! NEC Portable Internetwork Core Operating System Software
+! IX Series IX2025 (magellan-sec) Software, Version 9.5.27, RELEASE SOFTWARE
+! Compiled Mar 06-Fri-2020 15:53:45 JST #2
+! Last updated Mar 11-Tue-2014 15:03:55 JST
+!
+!
+hostname technotut
+timezone +09 00
+!
+!
+!
+!
+!
+!
+ntp master
+!
+!
+!
+!
+!
+ip ufs-cache enable
+ip dhcp enable
+!
+arp auto-refresh
+!
+!
+!
+!
+bridge irb enable
+!
+!
+!
+!
+!
+proxy-dns ip enable
+!
+telnet-server ip enable
+!
+ssh-server ip enable
+!
+http-server ip enable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip dhcp profile default
+  assignable-range 172.16.2.1 172.16.2.254
+  lease-time 86400
+  fixed-assignment [IP address] [MAC address]
+!
+device FastEthernet0/0
+!
+device FastEthernet0/1
+!
+device FastEthernet1/0
+!
+device BRI1/0
+  isdn switch-type hsd128k
+!
+interface FastEthernet0/0.0
+  no ip address
+  bridge-group 1
+  no shutdown
+!
+interface FastEthernet0/1.0
+  no ip address
+  bridge-group 1
+  no shutdown
+!
+interface FastEthernet1/0.0
+  no ip address
+  bridge-group 1
+  no shutdown
+!
+interface BRI1/0.0
+  encapsulation ppp
+  no auto-connect
+  no ip address
+  shutdown
+!
+interface BVI1
+  ip address 172.16.0.1/22
+  ip dhcp binding default
+  bridge-group 1
+  no shutdown
+!
+interface Loopback0.0
+  no ip address
+!
+interface Null0.0
+  no ip address
